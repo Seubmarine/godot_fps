@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7b6f4ofc6oab"]
+
+[ext_resource type="Material" uid="uid://dwc1vloye2o63" path="res://level/material/debug.tres" id="1_3n858"]
+[ext_resource type="PackedScene" uid="uid://cetghlaa7ms5i" path="res://player/Player.tscn" id="2_kai3v"]
+[ext_resource type="PackedScene" uid="uid://c73kvnmxktksj" path="res://UI/debug_ui.tscn" id="3_3yp8c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dvtps"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_xgsww"]
+sky_material = SubResource("ProceduralSkyMaterial_dvtps")
+
+[sub_resource type="Environment" id="Environment_et263"]
+background_mode = 2
+sky = SubResource("Sky_xgsww")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_et263")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = ExtResource("1_3n858")
+use_collision = true
+size = Vector3(142, 1, 168)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.634623, 0, 0.772822, 0, 1, 0, -0.772822, 0, 0.634623, -27.7361, 3.15743, -2.47753)
+material_override = ExtResource("1_3n858")
+use_collision = true
+size = Vector3(41.0692, 15.4581, 28.4698)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.610331, 0.173903, 0.772822, -0.274026, 0.961722, 0, -0.74324, -0.211774, 0.634623, -20.5092, 2.31751, 13.0724)
+material_override = ExtResource("1_3n858")
+use_collision = true
+size = Vector3(26.756, 0.818126, 4.15007)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="."]
+transform = Transform3D(0.634623, 0.218627, 0.741253, 0, 0.959151, -0.282894, -0.772822, 0.179531, 0.608699, -34.2604, 7.7195, 20.1234)
+material_override = ExtResource("1_3n858")
+use_collision = true
+size = Vector3(3.61658, 0.818126, 16.8644)
+
+[node name="Player" parent="." instance=ExtResource("2_kai3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.701312, 0)
+
+[node name="DebugUI" parent="." instance=ExtResource("3_3yp8c")]
