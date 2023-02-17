@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cetghlaa7ms5i"]
+[gd_scene load_steps=4 format=3 uid="uid://cetghlaa7ms5i"]
 
-[ext_resource type="Script" path="res://Player/controller.gd" id="1_ewyg6"]
+[ext_resource type="Script" path="res://player/controller.gd" id="1_o8jay"]
+[ext_resource type="Script" path="res://player/BulletSpawnPoint.gd" id="2_p1xle"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_de3hg"]
 radius = 0.4
@@ -9,12 +10,7 @@ height = 1.7
 [node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
 floor_max_angle = 1.0472
-floor_snap_length = 0.34
-script = ExtResource("1_ewyg6")
-speed_walk = 6.0
-speed_sprint = 12.0
-mouse_sentitivity_y = 0.243
-mouse_sentitivity_x = 0.264
+script = ExtResource("1_o8jay")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_de3hg")
@@ -23,3 +19,7 @@ shape = SubResource("CapsuleShape3D_de3hg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519561, -0.219934)
 current = true
 fov = 90.0
+
+[node name="BulletSpawnPoint" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.250283, -0.783887)
+script = ExtResource("2_p1xle")

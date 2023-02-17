@@ -26,7 +26,7 @@ func _physics_process(delta : float):
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y += jump_force
-	velocity.y += -gravity * 0.1
+	velocity.y += -gravity * delta * 7
 	var speed = speed_walk
 	if Input.is_action_pressed("sprint"):
 		speed = speed_sprint
