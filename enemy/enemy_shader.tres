@@ -1,0 +1,57 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://d3xp711boi52m"]
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_4pvet"]
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_euxtb"]
+constant = Color(1, 0, 0.0390687, 1)
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_38nk6"]
+output_port_for_preview = 0
+default_input_values = [0, false, 1, Vector3(1, 1, 1), 2, Vector3(0, 0, 0)]
+op_type = 4
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_q2fva"]
+parameter_name = "hit"
+qualifier = 2
+default_value_enabled = true
+
+[resource]
+code = "shader_type spatial;
+instance uniform bool hit = false;
+
+
+
+void fragment() {
+// BooleanParameter:8
+	bool n_out8p0 = hit;
+
+
+// ColorConstant:5
+	vec4 n_out5p0 = vec4(1.000000, 0.000000, 0.039069, 1.000000);
+
+
+// ColorConstant:4
+	vec4 n_out4p0 = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+	vec3 n_out6p0;
+// Switch:6
+	n_out6p0 = mix(vec3(n_out4p0.xyz), vec3(n_out5p0.xyz), float(n_out8p0));
+
+
+// Output:0
+	ALBEDO = n_out6p0;
+
+
+}
+"
+graph_offset = Vector2(-1137.18, 3.12164)
+nodes/fragment/4/node = SubResource("VisualShaderNodeColorConstant_4pvet")
+nodes/fragment/4/position = Vector2(-280, 340)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorConstant_euxtb")
+nodes/fragment/5/position = Vector2(-260, 220)
+nodes/fragment/6/node = SubResource("VisualShaderNodeSwitch_38nk6")
+nodes/fragment/6/position = Vector2(-60, 120)
+nodes/fragment/8/node = SubResource("VisualShaderNodeBooleanParameter_q2fva")
+nodes/fragment/8/position = Vector2(-640, 40)
+nodes/fragment/connections = PackedInt32Array(6, 0, 0, 0, 5, 0, 6, 1, 4, 0, 6, 2, 8, 0, 6, 0)
