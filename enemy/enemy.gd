@@ -26,7 +26,7 @@ func _physics_process(_delta):
 	print("lerp: ", lang)
 	rotation.y = lang
 #	var prout : Vector3 = lerp(-transform.basis.z, target, 0.4).dot()
-	velocity = (-transform.basis.z).normalized() * 6
+	velocity = (-transform.basis.z).normalized() * 40
 	if !is_on_floor():
 		velocity.y = -9.8
 	move_and_slide()

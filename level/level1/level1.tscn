@@ -76,9 +76,6 @@ size = Vector3(3.61658, 0.818126, 4.55995)
 
 [node name="Player" parent="." instance=ExtResource("2_kai3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.701312, 0)
-speed_walk = 5.0
-speed_sprint = 10.0
-jump_force = 20.0
 mouse_sentitivity_y = 0.5
 mouse_sentitivity_x = 0.5
 
